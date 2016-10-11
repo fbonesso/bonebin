@@ -21,15 +21,15 @@ function crypt() {
 	var password = $("#crypt-password").val();
 
 	if ((bone == undefined) || (bone == "")) {
-                return;
-        }
-        else {
+		alert("Please, type some content to get encrypted.")
+	}
+	else {
 		bone = sjcl.codec.base64.fromBits(sjcl.codec.utf8String.toBits(sjcl.encrypt(password, bone, { ks: 256 })))
 
 		$.post("data/bone.php", { action: "save", bone: bone, crypt: true }, function(data) {
-                        window.location.href = "./" + data;
-                });
-        }
+			window.location.href = "./" + data;
+		});
+	}
 }
 
 function decrypt() {
@@ -37,16 +37,16 @@ function decrypt() {
 	var password = $("#decrypt-password").val();
 
 	if ((bone == undefined) || (bone == "")) {
-                return;
-        }
-        else {
-			bone = sjcl.decrypt(password, sjcl.codec.utf8String.fromBits(sjcl.codec.base64.toBits(bone)), { ks: 256 });
-			
-			$(".modal").hide();
-			$(".password").hide();
+		return;
+	}
+	else {
+		bone = sjcl.decrypt(password, sjcl.codec.utf8String.fromBits(sjcl.codec.base64.toBits(bone)), { ks: 256 });
 
-	        $("#bone").val(bone);
-        }
+		$(".modal").hide();
+		$(".password").hide();
+
+		$("#bone").val(bone);
+	}
 }
 
 function raw(bin) {

@@ -58,7 +58,7 @@ else {
 		<div id="password-modal-crypt" class="password" style="display:none;">
                         <center>
                                 <input type="password" placeholder="Type password to encrypt." id="crypt-password" />
-                                <button onclick="crypt();">Crypt</button>
+                                <button onclick="crypt();">Encrypt</button>
                         </center>
                         <br clear="all" />
                 </div>
@@ -69,7 +69,7 @@ else {
 			</div>
 
 			<div class="crypt" onclick="openCrypt();">
-				CRYPT (AES-256)
+				ENCRYPT (AES-256)
 			</div>
 			<?php if (($bin != '') && ($bin != '/')) { ?>
 			<div class="raw" onclick="raw('<?php echo $bin ?>');">
